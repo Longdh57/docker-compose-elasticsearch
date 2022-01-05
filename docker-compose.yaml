@@ -3,14 +3,14 @@ version: '3'
 services:
   elasticsearch:
     image: elasticsearch:7.14.1
-    container_name: elasticsearch
+    container_name: elasticdb
     environment:
       - node.name=elasticsearch
       - cluster.name=datasearch
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - cluster.initial_master_nodes=elasticsearch
-      - ELASTIC_PASSWORD=p@ssword
+      - ELASTIC_PASSWORD=DkIedPPSCb
       - ELASTIC_SECURITY=true
     ulimits:
       memlock:
@@ -21,10 +21,10 @@ services:
 
   kibana:
     image: kibana:7.14.1
-    container_name: elasticsearch
+    container_name: kibana
     environment:
       - ELASTICSEARCH_USERNAME=elastic
-      - ELASTICSEARCH_PASSWORD=p@ssword
+      - ELASTICSEARCH_PASSWORD=DkIedPPSCb
     ports:
       - "5601:5601"
     depends_on:
